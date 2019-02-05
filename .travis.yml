@@ -1,0 +1,8 @@
+language: csharp
+solution: PizzaOrderRefactoringKata.sln
+install:
+  - nuget restore PizzaOrderRefactoringKata.sln
+  - nuget install NUnit.Runners -Version 3.6.1 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release PizzaOrderRefactoringKata.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.6.1/tools/nunit3-console.exe ./PizzaOrderRefactoringKata.Tests/bin/Release/PizzaOrderRefactoringKata.Tests.dll
