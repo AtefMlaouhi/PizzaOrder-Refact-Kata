@@ -49,6 +49,7 @@
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="IPrepareOrder.cs" />
     <Compile Include="PrepareOrder.cs" />
+    <Compile Include="StepPreparePizza\BakeStep.cs" />
     <Compile Include="StepPreparePizza\PrepareStep.cs" />
   </ItemGroup>
   <ItemGroup />
