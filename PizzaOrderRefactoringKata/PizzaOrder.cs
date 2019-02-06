@@ -7,7 +7,7 @@ namespace PizzaOrderRefactoringKata
     {
         private ILogger logger;
 
-        PizzaOrder(int loggerType)
+        public PizzaOrder(int loggerType)
         {
             if (loggerType == 0)
             {
@@ -19,29 +19,36 @@ namespace PizzaOrderRefactoringKata
             }
         }
 
-        public String CreatePizza(String name)
+        public String CreateOrder(String name)
         {
+            string result = string.Empty;
+
             if (name == "Cheese Pizza")
             {
-                return new IPizza(name, new List<string>() {"Cheese", "Camembert", "Mozzarella" }, 18).createOrder();
+                result = new IPizza(name, new List<string>() {"Cheese", "Camembert", "Mozzarella" }, 18).createOrder();
             }
             else if (name == "Pepperoni Pizza")
             {
-                return new IPizza(name, new List<string>() { "Red Peperoni", "Green Peperoni", "Yelloo Peperoni" }, 15).createOrder();
+                result = new IPizza(name, new List<string>() { "Mozzarella", "Red Peperoni", "Green Peperoni", "Yelloo Peperoni" }, 15).createOrder();
             }
-            else if (name == "All dressed Pizza")
+            else if (name == "All Dressed Pizza")
             {
-                return new IPizza(name, new List<string>() { "Cheese", "Camembert", "Mozzarella" }, 12).createOrder();
+                result = new IPizza(name, new List<string>() { "Ananas", "Avocat", "Kewi" }, 12).createOrder();
             }
             else if (name == "Veggan Pizza")
             {
-                return new IPizza(name, new List<string>() { "Cheese", "Camembert", "Mozzarella" }, 14).createOrder();
+                result = new IPizza(name, new List<string>() { "Mozzarella", "Cherry Tomato", "mushrooms", "Red Peperoni", "Green Peperoni", "Yelloo Peperoni" }, 14).createOrder();
             }
             else if (name == "Mexican Pizza")
             {
-                return new IPizza(name, new List<string>() { "Cheese", "Camembert", "Mozzarella" }, 20).createOrder();
+                result = new IPizza(name, new List<string>() { "Cheese", "Green Onion", "Avocat" }, 20).createOrder();
             }
-            return String.Empty;
+            else if(name == "Dummy Pizza")
+            {
+                result = new IPizza(name, new List<string>(), 20).createOrder();
+            }
+
+            return result;
         }
     }
 }

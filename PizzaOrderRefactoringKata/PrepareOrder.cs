@@ -18,7 +18,7 @@ namespace PizzaOrderRefactoringKata
 
         public string Prepare()
         {
-            if (this.name != "Dummy pizza")
+            if (this.name != "Dummy Pizza")
             {
                 return "Pizza Order : " + name + "\n";
             }
@@ -55,7 +55,7 @@ namespace PizzaOrderRefactoringKata
                 pizza += "\n\t" + this.listIngredients[i];
             }
 
-            pizza += "--------\n";
+            pizza += "\n--------\n";
 
             return pizza;
         }
