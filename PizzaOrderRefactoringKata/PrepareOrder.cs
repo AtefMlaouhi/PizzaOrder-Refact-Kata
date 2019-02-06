@@ -3,30 +3,27 @@ using System.Collections.Generic;
 
 namespace PizzaOrderRefactoringKata
 {
+    using StepPreparePizza;
+
     public class PrepareOrder : IPrepareOrder
     {
         private string name;
         private List<string> listIngredients;
         private int timeToBake;
 
+        private PrepareStep _prepareStep; 
+
         public PrepareOrder(string name, List<string> listIngredients, int timeToBake)
         {
             this.name = name;
             this.listIngredients = listIngredients;
             this.timeToBake = timeToBake;
+
+            this._prepareStep = new PrepareStep(this.name);
         }
 
-        public string Prepare()
-        {
-            if (this.name != "Dummy Pizza")
-            {
-                return "Pizza Order : " + name + "\n";
-            }
-            else
-            {
-                throw new NotImplementedException("this pizza is not implemented.");
-            }
-        }
+        public string Prepare() => this._prepareStep.Prepare();
+        
 
         public string Bake()
         {
