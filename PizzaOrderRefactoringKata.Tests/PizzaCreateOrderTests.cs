@@ -34,7 +34,7 @@ namespace PizzaOrderRefactoringKata.Tests
         public void PizzaOrder_Should_Be_Return_CheesePizza_When_CreateOrder_Is_Called()
         {
             var result = this._Ipizza.CreateOrder("Cheese Pizza");
-            result.Should().BeOfType<string>().And.NotBeNull().And.Equals(CheesePizzaResult);
+            result.Should().BeOfType<string>().And.NotBeNull().And.BeEquivalentTo(CheesePizzaResult);
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace PizzaOrderRefactoringKata.Tests
         public void PizzaOrder_Should_Be_Return_Pepperoni_Pizza_When_CreateOrder_Is_Called()
         {
             var result = this._Ipizza.CreateOrder("Pepperoni Pizza");
-            result.Should().BeOfType<string>().And.NotBeNull().And.Equals(PepperoniPizzaResult);
+            result.Should().BeOfType<string>().And.NotBeNull().And.BeEquivalentTo(PepperoniPizzaResult);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace PizzaOrderRefactoringKata.Tests
         public void PizzaOrder_Should_Be_Return_All_Dressed_Pizza_When_CreateOrder_Is_Called()
         {
             var result = this._Ipizza.CreateOrder("All Dressed Pizza");
-            result.Should().BeOfType<string>().And.NotBeNull().And.Equals(AllDressedPizzaResult);
+            result.Should().BeOfType<string>().And.NotBeNull().And.BeEquivalentTo(AllDressedPizzaResult);
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace PizzaOrderRefactoringKata.Tests
         public void PizzaOrder_Should_Be_Return_Veggan_Pizza_When_CreateOrder_Is_Called()
         {
             var result = this._Ipizza.CreateOrder("Veggan Pizza");
-            result.Should().BeOfType<string>().And.NotBeNull().And.Equals(VegganPizzaResult);
+            result.Should().BeOfType<string>().And.NotBeNull().And.BeEquivalentTo(VegganPizzaResult);
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace PizzaOrderRefactoringKata.Tests
         public void PizzaOrder_Should_Be_Return_Mexican_Pizza_When_CreateOrder_Is_Called()
         {
             var result = this._Ipizza.CreateOrder("Mexican Pizza");
-            result.Should().BeOfType<string>().And.NotBeNull().And.Equals(MexicanPizzaResult);
+            result.Should().BeOfType<string>().And.NotBeNull().And.BeEquivalentTo(MexicanPizzaResult);
         }
 
         [Test]

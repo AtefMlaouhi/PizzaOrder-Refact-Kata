@@ -15,14 +15,9 @@ namespace PizzaOrderRefactoringKata
             prepareOrder = new PrepareOrder(name, listIngredients, timeToBake);
         }
 
-        public string createOrder()
+        public string CreateOrder()
         {
-            string order = "";
-            order += prepareOrder.Prepare();
-            order += prepareOrder.Bake();
-            order += prepareOrder.Cut();
-            order += prepareOrder.Box();
-            return order;
+            return this.prepareOrder.PrintOrder();
         }
     }
 }

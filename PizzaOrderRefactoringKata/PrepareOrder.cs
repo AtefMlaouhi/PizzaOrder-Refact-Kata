@@ -3,29 +3,52 @@ using System.Collections.Generic;
 
 namespace PizzaOrderRefactoringKata
 {
-    using StepPreparePizza;
+    using AbstractStep;
+    using ConcreteStep;
 
     public class PrepareOrder : IPrepareOrder
     {
-        private PrepareStep _PrepareStep;
-        private BakeStep _BakeStep;
-        private CutStep _CutStep;
-        private BoxStep _BoxStep;
+        private AbstractStepOrderPreparing _AcceptOrder;
+        private AbstractPizza Pizza;
 
-        public PrepareOrder(string name, List<string> listIngredients, int timeToBake)
+        private string Name { get; set; }
+        private IList<string> ListIngredients { get; set; }
+        private int TimeToBake { get; set; }
+
+
+        public PrepareOrder(string name, IList<string> listIngredients, int timeToBake)
         {
-            this._PrepareStep = new PrepareStep(name);
-            this._BakeStep = new BakeStep(timeToBake, listIngredients);
-            this._CutStep = new CutStep();
-            this._BoxStep = new BoxStep();
+            _AcceptOrder = new AcceptOrder();
+            AbstractStepOrderPreparing _BakeOrder = new BakeOrder();
+            AbstractStepOrderPreparing _CutOrder = new CutOrder();
+            AbstractStepOrderPreparing _BoxOrder = new BoxOrder();
+            _AcceptOrder.SetNextStep(_BakeOrder);
+            _BakeOrder.SetNextStep(_CutOrder);
+            _CutOrder.SetNextStep(_BoxOrder);
+
+            this.Name = name;
+            this.ListIngredients = listIngredients;
+            this.TimeToBake = timeToBake;
+
         }
 
-        public string Prepare() => this._PrepareStep.Prepare();
+        public string PrintOrder()
+        {
+            if (this.Name.Contains("Dummy"))
+            {
+                Pizza = new DommyPizza();
+            }
+            else
+            {
+                Pizza = new RealPizza();
+            }
 
-        public string Bake() => this._BakeStep.Bake();
+            this.Pizza.PizzaName = this.Name;
+            this.Pizza.TimeToBake = this.TimeToBake;
+            this.Pizza.ListIngredient = this.ListIngredients;
 
-        public string Cut() => this._CutStep.Cut();
-
-        public string Box() => this._BoxStep.Box();
+            this._AcceptOrder.Execute(Pizza);
+            return this.Pizza.Order;
+        }
     }
 }
